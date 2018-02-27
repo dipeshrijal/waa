@@ -38,6 +38,7 @@ public class AddNamesServlet extends HttpServlet {
 
 			if (personList == null) {
 				personList = new ArrayList<>();
+				session.setAttribute("list", personList);
 			}
 			
 			// to check if the person with same key is inserted
@@ -55,8 +56,6 @@ public class AddNamesServlet extends HttpServlet {
 				Person person = new Person(key, fname, lname);
 				personList.add(person);
 			}
-
-			session.setAttribute("list", personList);
 		}
 
 		response.sendRedirect("AllNamesServlet");
