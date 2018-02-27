@@ -2,6 +2,7 @@ package com.java.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.java.names.Person;
-import com.java.names.PersonList;
 
 /**
  * Servlet implementation class AllNamesServlet
@@ -32,28 +32,27 @@ public class AllNamesServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
-		PersonList personlist = (PersonList) session.getAttribute("list");
-		if (personlist == null) {
-			personlist = new PersonList();
-			session.setAttribute("list", personlist);
-		}
 
+		@SuppressWarnings("unchecked")
+		List<Person> personList = (List<Person>) session.getAttribute("list");
+		
+		if (personList == null) {
+			personList = new ArrayList<>();
+		}
+		
 		out.println("<html>");
 		out.println("<body>");
-
-		List<Person> plist = personlist.getPersonList();
-
-		if (plist.size() > 0) {
+		
+		if (personList.size() > 0) {
 			out.println("List of Names");
 			out.println("<table>");
-			for (Person p : plist) {
+			for (Person p : personList) {
 				out.println("<tr><th>" + p.getKey() + "</th><th>" + p.getFirstName() + "</th><th>" + p.getLastName()
 						+ "</th><th>");
 			}
 			out.println("</table>");
 		}
-		
-		
+
 		out.println("<form method=GET action=AllNamesServlet>");
 		out.println("<input type=submit value='Show All Names'>");
 		out.println("</form>");
