@@ -1,0 +1,11 @@
+<ui:composition template="/templates/masterLayout.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:define name="pageTitle">
+        #{msgs.titleMultipleEmployees}
+    </ui:define>
+    <ui:define name="sidebar">
+        <ui:include src="sections/multipleemployee/sidebar.xhtml"/>
+    </ui:define>
+    <ui:define name="content">
+        <ui:include src="sections/multipleemployee/content.xhtml"/>
+    </ui:define>
+</ui:composition>

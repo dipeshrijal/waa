@@ -1,0 +1,29 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:dataTable value="#{employeeDetails.employees}" var="employee">
+        <h:column>
+            <f:facet name="header">
+                #{msgs.idPrompt}
+            </f:facet>
+            #{employee.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                #{msgs.namePrompt}
+            </f:facet>
+            #{employee.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                #{msgs.phonePrompt}
+            </f:facet>
+            #{employee.phone}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                #{msgs.salaryPrompt}
+            </f:facet>
+            #{employee.salary}
+        </h:column>
+    </h:dataTable>
+</ui:composition>

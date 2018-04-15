@@ -1,0 +1,20 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets">
+    <table>
+        <tr>
+            <td>#{msgs.idPrompt}</td>
+            <td>#{employeeDetails.activeEmployee.id}</td>
+        </tr>
+        <tr>
+            <td>#{msgs.namePrompt}</td>
+            <td>#{employeeDetails.activeEmployee.name}</td>
+        </tr>
+        <tr>
+            <td>#{msgs.phonePrompt}</td>
+            <td>#{employeeDetails.activeEmployee.phone}</td>
+        </tr>
+        <tr>
+            <td>#{msgs.salaryPrompt}</td>
+            <td>#{employeeDetails.activeEmployee.salary}</td>
+        </tr>
+    </table>
+</ui:composition>

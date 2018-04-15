@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>#{msg.UITitle}</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p>
+                #{msg.from}
+                <h:selectOneMenu value="#{jsfui.from}">
+                    <f:selectItem itemValue="Amsterdam" itemLabel="Amsterdam"/>
+                    <f:selectItem itemValue="Paris" itemLabel="Paris"/>
+                    <f:selectItem itemValue="Lissabon" itemLabel="Lissabon"/>
+                </h:selectOneMenu>
+            </p>
+            <p>
+                #{msg.to}
+                <h:selectOneMenu value="#{jsfui.to}">
+                    <f:selectItems value="#{jsfui.toItems}"/>
+                </h:selectOneMenu>
+            </p>
+            <p>#{msg.departureDate} <h:inputText value="#{jsfui.departureDate}"/></p>
+            <p>#{msg.returnDate} <h:inputText value="#{jsfui.returnDate}"/></p>
+            <p>
+                <h:selectOneRadio value="#{jsfui.tripType}">
+                    <f:selectItem itemLabel="#{msg.roundTrip}" itemValue="#{msg.roundTrip}"/>
+                    <f:selectItem itemLabel="#{msg.oneWay}" itemValue="#{msg.oneWay}"/>
+                </h:selectOneRadio>
+            </p>
+            <p>
+                <h:selectManyCheckbox value="#{jsfui.options}">
+                    <f:selectItem itemValue="#{msg.firstClass}" itemLabel="#{msg.firstClass}"/>
+                    <f:selectItem itemValue="#{msg.exactDates}" itemLabel="#{msg.exactDates}"/>
+                    <f:selectItem itemValue="#{msg.noStopOver}" itemLabel="#{msg.noStopOver}"/>
+                </h:selectManyCheckbox>
+            </p>
+            <p><h:commandButton value="#{msg.submit}" action="#{jsfui.printToConsole}"/></p>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
