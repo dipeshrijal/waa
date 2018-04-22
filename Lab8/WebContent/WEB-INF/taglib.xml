@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib version="2.0">
+    <namespace>http://edu.mum.mscs.lab7.com</namespace>
+    <tag>
+        <tag-name>validateBrand</tag-name>
+        <validator>
+            <validator-id>brandValidator</validator-id>
+        </validator>
+    </tag>
+</facelet-taglib>
