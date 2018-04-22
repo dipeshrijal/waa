@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <application>
+        <message-bundle>messages</message-bundle>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+    </application>
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{temperatureForm.submit}</from-action>
+            <from-outcome>temperature</from-outcome>
+            <to-view-id>/temperature_info.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/car_form.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{carForm.submit}</from-action>
+            <from-outcome>car</from-outcome>
+            <to-view-id>/car_info.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>

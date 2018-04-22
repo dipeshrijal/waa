@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:lab7="http://edu.mum.mscs.lab7.com">
+<f:view>
+    <h:head>
+        <title>#{msgs.titleValidation}</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="3">
+                #{msgs.promptBrand}
+                <h:inputText id="brand" label="#{msgs.promptBrand}" value="#{carForm.brand}" required="true"
+                             requiredMessage="Brand is required">
+                    <lab7:validateBrand errorSummary="Invalid Brand"/>
+                </h:inputText>
+                <h:message for="brand" errorClass="error"/>
+
+                #{msgs.promptLicenseNr}
+                <h:inputText id="licenseno" label="#{msgs.promptLicenseNr}" value="#{carForm.licenseNumber}"
+                             required="true" validatorMessage="License plate is not valid"
+                             requiredMessage="License plate is required">
+                    <f:validateRegex pattern="[A-Z]{2}-\d{2}-[A-Z]{2}"/>
+                </h:inputText>
+                <h:message for="licenseno" errorClass="error"/>
+
+                #{msgs.promptPrice}
+                <h:inputText id="price" label="#{msgs.promptPrice}" value="#{carForm.price}" required="true"
+                             requiredMessage="Price is required">
+                    <f:validator validatorId="priceValidator"/>
+                </h:inputText>
+                <h:message for="price" errorClass="error"/>
+            </h:panelGrid>
+            <h:commandButton value="#{msgs.btnSubmit}" action="#{carForm.submit}"/>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
