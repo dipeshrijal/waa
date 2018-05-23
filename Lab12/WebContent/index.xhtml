@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<f:view>
+	<ui:composition template="templates/page-template.xhtml">
+		<ui:param name="pageTitle" value="CD Shop" />
+		<ui:define name="panel-main">
+			<h:dataTable value="#{popularCds.cds}" var="cd">
+				<h:column>
+					<f:facet name="header">Product Code</f:facet>
+                    #{cd.code}
+                </h:column>
+				<h:column>
+					<f:facet name="header">Product Name</f:facet>
+                    #{cd.name}
+                </h:column>
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+                    $#{cd.price}
+                </h:column>
+				<h:column>
+					<h:form>
+						<h:commandButton action="#{shoppingCart.addCd(cd)}"
+							value="Add to Cart" />
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+		<ui:define name="panel-footer">
+			<h:outputLink value="shoppingcart.xhtml">Show Shopping Cart</h:outputLink>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>

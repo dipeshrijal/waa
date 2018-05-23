@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<f:view>
+	<ui:composition template="templates/page-template.xhtml">
+		<ui:param name="pageTitle" value="Shopping Cart" />
+		<ui:define name="panel-main">
+			<ui:fragment rendered="#{not empty shoppingCart.lines}">
+				<h:dataTable value="#{shoppingCart.lines}" var="line">
+					<h:column>
+						<f:facet name="header">Product Code</f:facet>
+                        #{line.cd.code}
+                    </h:column>
+					<h:column>
+						<f:facet name="header">Product Name</f:facet>
+                        #{line.cd.name}
+                        <f:facet name="footer">Total Price</f:facet>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Price</f:facet>
+                        $#{line.cd.price}
+                    </h:column>
+					<h:column>
+						<f:facet name="header">Quantity</f:facet>
+                        #{line.quantity}
+                    </h:column>
+					<h:column>
+						<f:facet name="header">Total Price</f:facet>
+                        $#{line.amount}
+                        <f:facet name="footer">$#{shoppingCart.totalAmount}</f:facet>
+					</h:column>
+					<h:column>
+						<h:form>
+							<h:commandButton action="#{shoppingCart.removeCd(line.cd)}"
+								value="Remove from Cart" />
+						</h:form>
+					</h:column>
+				</h:dataTable>
+			</ui:fragment>
+			<h:outputText rendered="#{empty shoppingCart.lines}" class="message"
+				value="There are no CDs in the shopping cart..." />
+		</ui:define>
+		<ui:define name="panel-footer">
+			<h:outputLink value="index.xhtml">Continue Shopping</h:outputLink>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Airlines Info - Events Lab</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            Airline
+            <h:selectOneMenu onchange="submit()" valueChangeListener="#{form.airlineChanged}">
+                <f:selectItem itemLabel="All" itemValue=""/>
+                <f:selectItem itemLabel="KLM" itemValue="klm"/>
+                <f:selectItem itemLabel="NorthWest" itemValue="northwest"/>
+                <f:selectItem itemLabel="United Airlines" itemValue="united airlines"/>
+            </h:selectOneMenu>
+        </h:form>
+        <br/>
+        <h:dataTable value="#{form.filteredAirlines}" var="airline">
+            <h:column>
+                <h:outputText value="#{airline.from}"/>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{airline.to}"/>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{airline.date}"/>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{airline.name}"/>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{airline.price}"/>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</f:view>
+</html>

@@ -1,0 +1,13 @@
+.page-title {
+	color: green;
+	text-align: center;
+}
+
+table, tr, td, th {
+	border: 1px solid red;
+}
+
+.message {
+	color: teal;
+	font-size: 20px;
+}
