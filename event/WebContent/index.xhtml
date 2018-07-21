@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>HELLO WORLD</title>
+</h:head>
+<h:body>
+
+	<h:form>
+
+Airline: <h:selectOneMenu value="#{airline.selectedAirline}"
+			id="selectOneMenu1" valueChangeListener="#{airline.changeAirline}" onchange="submit()">
+			<f:selectItem itemLabel="All" itemValue="All" />
+			<f:selectItem itemLabel="KLM" itemValue="KLM" />
+			<f:selectItem itemLabel="NorthWest" itemValue="NorthWest" />
+			<f:selectItem itemLabel="United Airlines" itemValue="United Airlines" />
+		</h:selectOneMenu>
+
+		<h:dataTable value="${airline.flightListshow}" var="flight"
+			border="2">
+			<h:column>
+				<h:outputText value="#{flight.fromCity}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{flight.toCity}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{flight.date}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{flight.airline}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{flight.price}" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
